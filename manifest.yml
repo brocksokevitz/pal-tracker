@@ -5,7 +5,7 @@ applications:
     routes:
       - route: pal-tracker-brock-sokevitz.cfapps.io
     services:
-      - tracker-database
+      - mysql
     env:
       WELCOME_MESSAGE: Hello from the review environment
       JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
