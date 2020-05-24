@@ -17,8 +17,7 @@ jobs:
       run: sudo service mysql start
     - name: Create test database
       run: |
-        mysql -uroot -p mysql < databases/tracker/create_databases.sql
-        lolomg123
+        mysql -uroot -proot < databases/tracker/create_databases.sql
         ./gradlew testMigrate
     - name: Build with Gradle
       run: ./gradlew build
