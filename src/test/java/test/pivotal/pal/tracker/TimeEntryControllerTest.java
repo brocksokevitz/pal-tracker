@@ -25,26 +25,20 @@ public class TimeEntryControllerTest {
     private TimeEntryController controller;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws Exception {
         timeEntryRepository = mock(TimeEntryRepository.class);
-        controller = new TimeEntryController(timeEntryRepository);
-    }
+        MeterRegistry meterRegistry = mock(MeterRegistry.class);
 
-//    @BeforeEach
-//    public void setUp() throws Exception {
-//        timeEntryRepository = mock(TimeEntryRepository.class);
-//        MeterRegistry meterRegistry = mock(MeterRegistry.class);
-//
-//        doReturn(mock(DistributionSummary.class))
-//                .when(meterRegistry)
-//                .summary("timeEntry.summary");
-//
-//        doReturn(mock(Counter.class))
-//                .when(meterRegistry)
-//                .counter("timeEntry.actionCounter");
-//
-//        controller = new TimeEntryController(timeEntryRepository, meterRegistry);
-//    }
+        doReturn(mock(DistributionSummary.class))
+                .when(meterRegistry)
+                .summary("timeEntry.summary");
+
+        doReturn(mock(Counter.class))
+                .when(meterRegistry)
+                .counter("timeEntry.actionCounter");
+
+        controller = new TimeEntryController(timeEntryRepository, meterRegistry);
+    }
 
     @Test
     public void testCreate() {
